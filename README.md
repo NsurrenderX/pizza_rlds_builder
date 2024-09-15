@@ -38,6 +38,19 @@ pizza_dataset
 | joint_velocity | 7 | The joint velocities of the robot arm. |
 | gripper_width | 1 | The width of the robot arm's gripper, measured in meters |
 
+## Usage
+This repository contains two files: pizza_dataset_dataset_builder.py and rlds_builder.yaml. The rlds_builder.yaml file is a conda environment configuration file, which can be used to set up the corresponding conda environment. The pizza_dataset_dataset_builder.py is a Python script that converts our pizza dataset into the RLDS format. For specific usage, you can refer to [this repository](https://github.com/kpertsch/rlds_dataset_builder). The Python file corresponds to the example_dataset_dataset_builder.py found in the example_dataset folder of the rlds_dataset_builder repository.
+
+The default usage is as follows:
+```
+1) Copy pizza_dataset_dataset_builder.py to the current directory in your bash terminal
+2) Activate the conda environment created by rlds_builder.yaml
+3) Modify the 'path' parameter at line 84 of pizza_dataset_dataset_builder.py to point to the folder containing our pizza data
+4) Modify the 'id' parameter at line 84 of pizza_dataset_dataset_builder.py to point to the task ID you want to convert
+5) tfds build --data_dir "path/to/save/dir"
+```
+After the conversion process, you will obtain the dataset in RLDS format corresponding to the task specified by the 'id'.
+
 
 ## Caution
-#### The data in this dataset is raw and requires alignment and preprocessing before further usage. Some states and frames are missing. Some episodes might not accomplish the tasks described in the dataset. Usually the first state is considered aligned with the first frame of each episode.
+#### The data in this dataset is raw and requires alignment and preprocessing before further usage. Usually the first state is considered aligned with the first frame of each episode.
